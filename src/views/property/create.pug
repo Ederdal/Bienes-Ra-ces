@@ -1,0 +1,66 @@
+extends ../layout/index
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+block content
+    .py-1
+        .bg-white.shadow.py-8.py-4.rounded.mx-auto.max-w-4xl.my-10(class="md:px-10")
+           form.space-y-8 
+                .space-y-8 
+                    h3.text-lg.leading-6.font-md.text-gray-900.uppercase.font-bold General Information of Property
+                    p.text-gray-600 Please carefully type the specific information of the property that you want to sell. 
+                    div
+                        label(for="title").block.text-sm.uppercase.text-gray-500.mb-3.font-bold Title of announcement
+                        input(type="text", name="title", placeholder="ex. House with 2 floors")#title.w-full.px-3.py2.border.border-gray-300.rounded-md.placeholder-gray-400
+                    div(class="md:flex md:gap-4")
+                        div(class="md:w-1/2")
+                            label(for="category").block.text-sm.uppercase.text-gray-500.mb-3.font-bold Category
+                            select#category.w-full.px-3.py-2.border.border-gray-300.rounded
+                                option(value="" selected disabled) -- SELECT CATEGORY --
+                                option(value="") Apartment
+                                option(value="") House
+                                option(value="") Landfield
+                                option(value="") Local
+                                option(value="") Warehouse
+                        
+                        div(class="md:w-1/2")
+                            label(for="priceRage").block.text-sm.uppercase.text-gray-500.mb-3.font-bold Price Range
+                            select#priceRage.w-full.px-3.py-2.border.border-gray-300.rounded
+                                option(value="" selected disabled) -- SELECT PRICE --
+                                option(value="") $10,000 - $50,000
+                                option(value="") $51,000 - $100,000
+                                option(value="") $101,000 - $200,000
+                                option(value="") $201,000 - $500,000
+                                option(value="") &gt; $501,000
+
+                    div(class="md:flex md:gap-4")
+                        div(class="md:w-1/3")
+                            label(for="nRooms").block.text-sm.uppercase.text-gray-500.mb-3.font-bold Number of rooms
+                            select#nRooms.w-full.px-3.py-2.border.border-gray-300.rounded
+                                option(value="" selected disabled) -- SELECT # ROOMS --
+                                - let n=1;
+                                    while n<=10 
+                                        option(value=n) #{n++}
+                        
+                        div(class="md:w-1/3")
+                            label(for="nWC").block.text-sm.uppercase.text-gray-500.mb-3.font-bold Number of WC
+                            select#nWC.w-full.px-3.py-2.border.border-gray-300.rounded
+                               
+                                option(value="" selected disabled) -- SELECT # WC --
+                                - let m=1;
+                                    while m<=5 
+                                        option(value=m) #{m++}
+
+                        div(class="md:w-1/3")
+                            label(for="pLot").block.text-sm.uppercase.text-gray-500.mb-3.font-bold NUMBER OF PARKING
+                            select#pLot.w-full.px-3.py-2.border.border-gray-300.rounded
+                                option(value="" selected disabled) -- SELECT PARKING LOTS --
+                                - let o=1;
+                                    while o<=3 
+                                        option(value=o) #{o++}
+                    #map(style="width: 100%; height: 300px;")                    
+block  scripts
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
+    script(src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js")
+    script(src="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geosearch/2.7.0/bundle.min.js")
+    script(src="/js/map.js")                 

@@ -1,0 +1,21 @@
+extends ../layout/index
+
+block content
+  .p-10
+    div.py-10
+      h1.text-center.text-4xl.my-10.font-extrabold(style="color: #9381FF;")
+        | Real
+        span.font-normal.text-black State
+      h2.text-center.text-3xl.font-extrabold= page
+    .mt-8.mx-auto.max-w-xl
+      .bg-white.py-8.px-4.shadow-xl.rounded-lg
+        if type === "Error"
+          p(href="/login", class="text-xl font-bold text-center my-10 uppercase bg-red-600 text-white w-full py-3")= type
+        else if type === "Warning"
+          p(href="/login", class="text-xl font-bold text-center my-10 uppercase bg-yellow-600 text-white w-full py-3")= type
+        else if type === "Information"
+          p(href="/login", class="text-xl font-bold text-center my-10 uppercase bg-green-600 text-white w-full py-3")= type
+
+        p(href="/login", class="text-xl font-bold text-center my-10")!= message
+        a#button_register.w-full(style="background-color: #9381FF; padding: 0.5rem 1rem;", class="text-white font-bold rounded-xl hover:bg-red-600 cursor-pointer uppercase", href="/login") back to login
+

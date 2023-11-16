@@ -1,0 +1,39 @@
+extends ../layout/index
+
+block content
+    div.py-10
+        h1.text-center.text-4xl.my-10.font-extrabold(style="color: #9381FF;") Real
+            span.font-normal.text-black State
+            
+        h2.text-center.text-3xl.font-extrabold= page
+        if errors
+            div(class="max-w-md mx-auto my-10")
+                each error in errors 
+                    p(class="bg-red-600 text-white uppercase text-xs text-center p-2 mb-1 font-bold")= error.msg
+        
+        .mt-8.mx-auto.max-w-xl
+            .bg-white.py-8.px-4.shadow-xl.rounded-lg
+                form.space-y-5(action="/login/register" method="POST" novalidate)
+                    div 
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Name:
+                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Full Name" type="text" name="name" value=user ? user.name:'' required)
+                    div
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Email:
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="user@domain.com" type="text" name="email" value=user ? user.email:'' required)
+
+                    div 
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Password:
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Enter your password" name="password" type="password" required)
+                    
+                    div 
+                        label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password-recovery") Confirm Password:
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Renter your password" name="password-recovery"  type="password" required)
+                    
+
+                    div
+                        input#button_register.w-full(style="background-color: #9381FF;" class="text-white font-bold py-3 rounded-xl hover:bg-red-600 cursor-pointer", type="submit", value="Create Account" required)
+
+                    div.flex.items-center.justify-between
+                        a.text-xs.text-gray-500(href="/login" class="hover:underline decoration-red-600") New user?, Create your acount
+                        a.text-xs.text-gray-500(href="/login/password-recovery" class="hover:underline decoration-red-600") If you have account, please Login
+                        

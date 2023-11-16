@@ -1,0 +1,29 @@
+extends ../layout/index
+
+block content
+  div.py-5
+    h1.text-center.text-4xl.my-10.font-extrabold(style="color: #9381FF;") Real
+            span.font-normal.text-black State
+    if errors
+      div(class="max-w-md mx-auto my-10")
+        each error in errors
+          p(class="bg-red-600 text-white uppercase text-xs text-center p-2 mb-1 font-bold")= error.msg 
+  .mt-8.mx-auto.max-w-xl
+    .bg-white.py-8.px-4.shadow-xl.rounded-lg
+      h2.text-center.text-3xl.font-extrabold.mb-9= page
+      form(noValidate action="/login" method="POST").flex.items-center.flex-col.justify-center.gap-5
+        div.w-full
+          label.block.text-sm.mb-2.font-bold(for="email") Email Register
+          input#email.w-full.px-3.py-2.border.border-gray-300.rounded-xl.mb-2(class="ease-in-out focus:outline-none focus:border-2 focus:border-majorelle-blue" placeholder="user@alegon.com" type="email" name="email" value= user ? user.email : '')
+        div.w-full
+          label.block.text-sm.mb-2.font-bold(for="password") Password
+          input#password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-alice-blue.mb-2(class="ease-in-out focus:outline-none focus:border-2 focus:border-majorelle-blue" placeholder="Password" type="password" name="password")
+        div.w-full
+          input#button_register.w-full(style="background-color: #9381FF;" class="text-white font-bold py-3 rounded-xl hover:bg-red-600 cursor-pointer", type="submit", value="Create Account" required)
+
+        div.flex.items-center.justify-between.w-full
+          a.text-xs.text-(href="/bienes-raices/users/login/register" class="hover:underline underline-offset-6 decoration-2 decoration-majorelle-blue font-medium") Create an account
+          a.text-xs.text-caput-mortuum(href="/bienes-raices/users/login/recovery" class="hover:underline underline-offset-6 decoration-2 decoration-majorelle-blue font-medium ease-in-out") Forgot your password? 
+            span.text-majorelle-blue Recover it
+
+        

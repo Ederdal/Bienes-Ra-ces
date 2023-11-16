@@ -1,0 +1,14 @@
+doctype html
+html(lag="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Real State &lt;220219&gt; #{page}
+        link(rel="stylesheet", href='/css/app.css', type='text/css')
+        block styles
+    body.min-h-screen(style="background-color: #FFEEDD;")
+        if showHeader
+            include nav-bar
+        main(class="mx-auto container mt-5 px-2")
+            block content
+        block scripts
